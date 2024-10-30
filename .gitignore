@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+
+
+
+venv/
+.env/
+
+
+*.env
+
+
+db.sqlite3
+
+# Fichiers de migration (optionnel)
+*/migrations/
+
+# Fichiers de log
+*.log
+
+# Fichiers de cache
+*.cache
+
+# Configuration d'éditeur (VSCode, PyCharm, etc.)
+.vscode/
+.idea/
