@@ -8,7 +8,7 @@ class Customer(models.Model):
              ("Femme","Femme"),)
     
     name=models.CharField(max_length=200)
-    email=models.EmailField()
+    email=models.EmailField(unique=True)
     phone=models.CharField(max_length=20)
     address=models.CharField(max_length=200)
     sex=models.CharField(choices=SEX_TYPES,max_length=5)
@@ -50,8 +50,8 @@ class Invoice(models.Model):
         return f"{self.customer.name}_{self.invoce_date}"
     
     @property
-    def get_total_invoice():
-        articles=self.article_set_all()
+    def get_total_invoice(self):
+        articles=self.article_set.all()
         total=sum([article.get_total_article() for article in articles])
         return total
     
@@ -67,5 +67,5 @@ class Article(models.Model):
         verbose_name_plural="Articles"
         
     @property
-    def get_total_article():
+    def get_total_article(self):
         return self.quantity * self.unit_price
